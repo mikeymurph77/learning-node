@@ -1,0 +1,19 @@
+mixin storeForm(store = {})
+  form(action="/add" method="POST" class="card")
+    label(for="name") Name
+    input(type="text" name="name")
+
+    label(for="description") Description
+    textarea(name="description")
+
+    //- Note that the `-` means you're about to enter javascript
+    - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegatraian', 'Licensed']
+
+    ul.tags
+      each choice in choices
+        .tag.tag__choice
+          input(type="checkbox" id=choice value=choice name="tags")
+          //- NOTE: the id and value are not in strings... this is because we are using the variable defined in the loop
+          label(for=choice)= choice
+          //- label(for=choice) #{choice} // is how you could also write the label using interpolaton
+    input(type="submit" value="Save →" class="button")
