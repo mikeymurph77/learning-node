@@ -13,4 +13,5 @@ exports.createStore = async (req, res) => {
   const store = new Store(req.body);
   await store.save();
   res.redirect('/');
+  req.flash('success', `Successfully Created ${store.name}! Care to leave a review?`);
 }
