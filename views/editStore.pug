@@ -3,9 +3,10 @@ extends layout
 include mixins/_storeForm
 
 block content
+  pre= h.dump(store)
   .inner
     h2= title
     //- h2 #{title} // the above is the same as writing this interpolated line
 
     //- The `+` indicates that we are using a mixin
-    +storeForm()
+    +storeForm(store)
